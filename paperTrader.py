@@ -4,16 +4,18 @@ import pandas as pd
 def menu():
     while(True):
         print("Type:")
-        print("GO to add a stock")
-        #Add removeStock() ?
+        print("ADD to add a stock")
+        print("REMOVE to remove a stock")
         print("VIEW to view portfolio")
         #Add updatePortfolio() (+ progress bar)
         #Add checkPortfolio() (Dividends?)
         print("END to finish")
         
         menu_input = input()
-        if menu_input == "GO":
+        if menu_input == "ADD":
             addStock()
+        elif menu_input == "REMOVE":
+            removeStock()
         elif menu_input == "VIEW":
             viewPortfolio()
         elif menu_input == "END":
@@ -28,6 +30,7 @@ def addStock():
     purchase_price = float(input("Enter purchase price: "))
     #Add brokerage?
     #Add number of stocks/total purchase price?
+    #Add accept multiple inputs at once
 
     stock = yf.Ticker(stock)
     stock_price = stock.info['currentPrice']
@@ -35,6 +38,17 @@ def addStock():
 
     new_row = [stock_ticker, purchase_price, stock_price]
     df.loc[len(df)] = new_row
+    df.to_csv(input_path, index=False)
+
+def removeStock():
+    def filter_rows_by_values(df, col, values):
+        return df[~df[col].isin(values)]
+    
+    removed_stock = input("Enter stock(s) to remove (separate multiple stocks with a space): ")
+    removed_stock_lst = []
+    removed_stock_lst = removed_stock.split()
+    global df
+    df = filter_rows_by_values(df, "Stock", removed_stock_lst)
     df.to_csv(input_path, index=False)
 
 def viewPortfolio():
