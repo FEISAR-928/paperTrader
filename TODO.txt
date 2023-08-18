@@ -1,0 +1,7 @@
+- Add profit/loss calculations
+	- Add total profit/loss for portfolio
+- Add remove a stock functionality
+- Mass update portfolio (possibly automatically upon retrieval by checkPortfolio(), rather than a separate method
+- Add dividend compatibility
+- Add brokerage + number of stocks purchased + total purchase price? Instead of individual price
+- Add comparison support
