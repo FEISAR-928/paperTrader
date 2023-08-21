@@ -1,3 +1,6 @@
 - Mass update portfolio (possibly automatically upon retrieval by checkPortfolio(), rather than a separate method
 - Add dividend compatibility
 - Add comparison support
+
+- Live plot of portfolio value
+- GUI display and control
